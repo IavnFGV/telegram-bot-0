@@ -1,5 +1,7 @@
 package org.drozda.bot.telegram;
 
+import org.drozda.util.EnvVars;
+import org.drozda.util.EnvVarsImpl;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -9,7 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TestBot0 extends TelegramLongPollingBot {
-    private static String TOKEN = "1294361821:AAEHcgRHjuhqgkvzg0yy3GrOa9v9MWPjD8s";
+
+    EnvVars envVars = new EnvVarsImpl();
     private static String NAME = "testbot0";
     private static Logger logger = Logger.getLogger(TestBot0.class.getName());
 
@@ -39,7 +42,7 @@ public class TestBot0 extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return TOKEN;
+        return envVars.getEnv(Const.BOT_TOKEN);
     }
 
     @Override
